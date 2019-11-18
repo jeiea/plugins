@@ -319,9 +319,9 @@ abstract class WebViewPlatformController {
         "WebView getScrollY is not implemented on the current platform");
   }
 
-  Future<List<Cookie>> getCookies();
+  Future<List<Cookie>> getCookies(String url);
 
-  Future<void> setCookies(List<Cookie> cookies);
+  Future<void> setCookies(String url, List<Cookie> cookies);
 
   Future<bool> clearCookies();
 }
@@ -528,7 +528,7 @@ abstract class WebViewPlatform {
   ///
   /// On iOS, returns all cookies from the [WebView] instance.
   /// On Android, only returns the cookies for the current URL from the [WebView] instance.
-  Future<List<Cookie>> getCookies() {
+  Future<List<Cookie>> getCookies(String url) {
     throw UnimplementedError(
         "WebView getCookies is not implemented on the current platform");
   }
@@ -536,9 +536,7 @@ abstract class WebViewPlatform {
   /// Sets the specified cookies.
   ///
   /// `cookies` must not be null.
-  Future<void> setCookies(
-    List<Cookie> cookies,
-  ) {
+  Future<void> setCookies(String url, List<Cookie> cookies) {
     throw UnimplementedError(
         "WebView setCookies is not implemented on the current platform");
   }
